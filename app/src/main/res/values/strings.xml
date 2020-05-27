@@ -16,7 +16,15 @@
     <string name="settings_order_by_key" translatable="false">order_by</string>
     <string name="settings_order_by_default" translatable="false">@string/settings_order_by_magnitude_value</string>
 
-    <string name="settings_order_by_magnitude_label">Magnitude</string>
+    <string name="settings_order_by_section_uk">UK news</string>
+    <string name="settings_order_by_section_opinion">Opinion</string>
+    <string name="settings_order_by_section_music">Music</string>
+    <string name="settings_order_by_section_business">Business</string>
+    <string name="settings_order_by_section_world">World news</string>
+    <string name="settings_order_by_section_us">US news</string>
+    <string name="settings_order_by_section_politics">Politics</string>
+    <string name="settings_order_by_section_sport">Football</string>
+
     <string name="settings_order_by_magnitude_value" translatable="false">magnitude</string>
 
     <string name="settings_order_by_most_recent_label">Most Recent</string>
