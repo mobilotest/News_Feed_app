@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/NewsFeed.iml" filepath="$PROJECT_DIR$/NewsFeed.iml" group="NewsFeed" />
+      <module fileurl="file://$PROJECT_DIR$/app/NewsFeed-app.iml" filepath="$PROJECT_DIR$/app/NewsFeed-app.iml" group="NewsFeed/app" />
       <module fileurl="file://$PROJECT_DIR$/QuakeReport.iml" filepath="$PROJECT_DIR$/QuakeReport.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
