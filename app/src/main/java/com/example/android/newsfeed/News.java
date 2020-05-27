@@ -35,6 +35,7 @@ public class News {
      */
 
     public News(String thumbnail, String header, String body, String section, long time, String url) {
+        mThumbnail = thumbnail;
         mSection = section;
         mNewsHeader = header;
         mNewsBody = body;

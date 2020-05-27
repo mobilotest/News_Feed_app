@@ -86,14 +86,13 @@ public class NewsAdapter extends ArrayAdapter<News> {
         // Get the Section from the current News object and
         // set this text on the Section TextView
         sectionTextView.setText(currentNews.getSection());
-        // Set the theme color for the news section text
-        int color = ContextCompat.getColor(getContext(), mColorResourceId);
-        sectionTextView.setTextColor(color);
+        // TODO: Set the color or the section text for the news
+//        int color = ContextCompat.getColor(getContext(), mColorResourceId);
+//        getSectionName();
 
 
         // Create a new Date object from the time in milliseconds of the earthquake
         Date dateObject = new Date(currentNews.getTimeInMilliseconds());
-
 
         // Find the TextView with view ID date
         TextView dateView = (TextView) listItemView.findViewById(R.id.tv_date_time);
@@ -107,7 +106,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
     }
 
     /**
-     * Return the color for the magnitude circle based on the intensity of the earthquake.
+     * Return the color for the section text based on the rubric of the news.
      *
      * @param sectionName of the news
      */

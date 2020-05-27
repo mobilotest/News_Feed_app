@@ -151,13 +151,13 @@ public final class QueryUtils {
                     // for that news.
 
                     // Extract the value for the key called "mag"
-                    String thumbnail = currentNews.getString("webTitle");
+                    String thumbnail = currentNews.getString("thumbnail");
 
                     // Extract the value for the key called "mag"
-                    String header = currentNews.getString("webTitle");
+                    String header = currentNews.getString("headline");
 
                     // Extract the value for the key called "place"
-                    String body = currentNews.getString("webUrl");
+                    String body = currentNews.getString("body");
 
                     // Extract the value for the key called "place"
                     String section = currentNews.getString("sectionName");
