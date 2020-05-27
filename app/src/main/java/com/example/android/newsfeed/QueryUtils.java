@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Helper methods related to requesting and receiving earthquake data from USGS.
+ * Helper methods related to requesting and receiving news data from GUARDIAN API server.
  */
 public final class QueryUtils {
 
@@ -70,7 +70,7 @@ public final class QueryUtils {
                 Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            Log.e(LOG_TAG, "Problem retrieving the news JSON results.", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -140,10 +140,10 @@ public final class QueryUtils {
             JSONArray newsArray = response.getJSONArray("results");
 
             if (newsArray.length() > 0) {
-                // For each earthquake in the newsArray, create an {@link currentNews} object
+                // For each news in the newsArray, create an {@link currentNews} object
                 for (int i = 0; i < newsArray.length(); i++) {
 
-                    // Get a single earthquake at position i within the list of news
+                    // Get a single news at position i within the list of news
                     JSONObject currentNews = newsArray.getJSONObject(i);
 
                     // For a given news, extract the JSONObject associated with the
@@ -170,10 +170,10 @@ public final class QueryUtils {
 
                     // Create a new {@link News} object with the magnitude, location, time,
                     // and url from the JSON response.
-//                    News newsResult = new News(thumbnail, header, body, section, time, url);
+                    News newsResult = new News(thumbnail, header, body, section, time, url);
 
                     // Add the new {@link News} to the list of news.
-//                    news.add(newsResult);
+                    news.add(newsResult);
                 }
 
                 // Return the list of news
@@ -204,10 +204,10 @@ public final class QueryUtils {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
 
-        // Extract relevant fields from the JSON response and create a list of {@link Earthquake}s
+        // Extract relevant fields from the JSON response and create a list of {@link News}s
         List<News> news = extractFeatureFromJson(jsonResponse);
 
-        // Return the list of {@link Earthquake}s
+        // Return the list of {@link News}s
         return news;
     }
 }

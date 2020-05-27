@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * An {@link NewsAdapter} knows how to create a list item layout for each earthquake
+ * An {@link NewsAdapter} knows how to create a list item layout for each news
  * in the data source (a list of {@link News} objects).
  *
  * These list item layouts will be provided to an adapter view like ListView
@@ -23,12 +23,6 @@ import java.util.List;
 public class NewsAdapter extends ArrayAdapter<News> {
 
     private int mColorResourceId;
-
-    /**
-     * The part of the location string from the USGS service that we use to determine
-     * whether or not there is a location offset present ("5km N of Cairo, Egypt").
-     */
-    private static final String LOCATION_SEPARATOR = " of ";
 
     /**
      * Constructs a new {@link NewsAdapter}.
@@ -41,8 +35,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
     }
 
     /**
-     * Returns a list item view that displays information about the earthquake at the given position
-     * in the list of earthquakes.
+     * Returns a list item view that displays each news at the given position in the list of news.
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -91,14 +84,14 @@ public class NewsAdapter extends ArrayAdapter<News> {
 //        getSectionName();
 
 
-        // Create a new Date object from the time in milliseconds of the earthquake
+        // Create a new Date object from the time in milliseconds of the news
         Date dateObject = new Date(currentNews.getTimeInMilliseconds());
 
         // Find the TextView with view ID date
         TextView dateView = (TextView) listItemView.findViewById(R.id.tv_date_time);
         // Format the date string (i.e. "Mar 3, 1984")
         String formattedDate = formatDate(dateObject);
-        // Display the date of the current earthquake in that TextView
+        // Display the date of the current news in that TextView
         dateView.setText(formattedDate);
 
         // Return the list item view that is now showing the appropriate data

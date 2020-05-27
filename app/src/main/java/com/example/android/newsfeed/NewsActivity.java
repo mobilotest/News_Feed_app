@@ -41,7 +41,7 @@ public class NewsActivity extends AppCompatActivity
         implements LoaderCallbacks<List<News>> {
 
     /**
-     * URL for earthquake data from the GUARDIAN dataset
+     * URL for news data from the GUARDIAN dataset
      */
     private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?";
             // "https://content.guardianapis.com/search?q=debate&tag=politics/politics&from-date=2014-01-01&api-key=test";
@@ -52,7 +52,7 @@ public class NewsActivity extends AppCompatActivity
     private NewsAdapter mAdapter;
 
     /**
-     * Constant value for the earthquake loader ID. We can choose any integer.
+     * Constant value for the news loader ID. We can choose any integer.
      * This really only comes into play if you're using multiple loaders.
      */
     private static final int NEWS_LOADER_ID = 1;
@@ -73,7 +73,7 @@ public class NewsActivity extends AppCompatActivity
         mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
         newsListView.setEmptyView(mEmptyStateTextView);
 
-        // Create a new adapter that takes an empty list of earthquakes as input
+        // Create a new adapter that takes an empty list of news as input
         mAdapter = new NewsAdapter(this, new ArrayList<News>());
 
         // Set the adapter on the {@link ListView}
@@ -166,7 +166,7 @@ public class NewsActivity extends AppCompatActivity
         // Set empty state text to display "No news found."
         mEmptyStateTextView.setText(R.string.no_news);
 
-        // Clear the adapter of previous earthquake data
+        // Clear the adapter of previous news data
         mAdapter.clear();
 
         // If there is a valid list of {@link News}s, then add them to the adapter's

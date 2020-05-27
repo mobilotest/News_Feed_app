@@ -1,7 +1,7 @@
 package com.example.android.newsfeed;
 
 /**
- * An {@link News} object contains information related to a single earthquake.
+ * An {@link News} object contains information related to a single news.
  */
 public class News {
 
