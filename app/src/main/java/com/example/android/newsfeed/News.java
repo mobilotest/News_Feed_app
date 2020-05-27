@@ -5,57 +5,78 @@ package com.example.android.newsfeed;
  */
 public class News {
 
-    /** Magnitude of the earthquake */
-    private double mMagnitude;
+    /** Thumbnail of the news item */
+    private String mThumbnail;;
 
-    /** Location of the earthquake */
-    private String mLocation;
+    /** Header of the news item */
+    private String mNewsHeader;
 
-    /** Time of the earthquake */
+    /** Body of the news item */
+    private String mNewsBody;
+
+    /** Section of the news item */
+    private String mSection;
+
+    /** Time of the news item */
     private long mTimeInMilliseconds;
 
-    /** Website URL of the earthquake */
+    /** Website URL of the news item */
     private String mUrl;
 
     /**
      * Constructs a new {@link News} object.
      *
-     * @param magnitude is the magnitude (size) of the earthquake
-     * @param location is the location where the earthquake happened
-     * @param timeInMilliseconds is the time in milliseconds (from the Epoch) when the
-     *                           earthquake happened
-     * @param url is the website URL to find more details about the earthquake
+     * @param thumbnail is the image of the news
+     * @param header is the header of the news
+     * @param body is the body of the news
+     * @param section is the section of the news
+     * @param time is the time in milliseconds (from the Epoch) when the news published
+     * @param url is the website URL to find more details about the news
      */
-    public News(double magnitude, String location, long timeInMilliseconds, String url) {
-        mMagnitude = magnitude;
-        mLocation = location;
-        mTimeInMilliseconds = timeInMilliseconds;
+
+    public News(String thumbnail, String header, String body, String section, long time, String url) {
+        mSection = section;
+        mNewsHeader = header;
+        mNewsBody = body;
+        mTimeInMilliseconds = time;
         mUrl = url;
     }
 
     /**
-     * Returns the magnitude of the earthquake.
+     * Get the thumbnail URL of the news item
      */
-    public double getMagnitude() {
-        return mMagnitude;
+    public String getThumbnail() { return mThumbnail; }
+
+    /**
+     * Returns the section of the news item.
+     */
+    public String getSection() {
+        return mSection;
     }
 
     /**
-     * Returns the location of the earthquake.
+     * Returns the header of the news item.
      */
-    public String getLocation() {
-        return mLocation;
+    public String getNewsHeader() {
+        return mNewsHeader;
     }
 
     /**
-     * Returns the time of the earthquake.
+     * Returns the body of the news item.
+     */
+    public String getNewsBody() {
+        return mNewsBody;
+    }
+
+    /**
+     * Returns the time of the news item.
      */
     public long getTimeInMilliseconds() {
         return mTimeInMilliseconds;
     }
 
     /**
-     * Returns the website URL to find more information about the earthquake.
+     * Returns the website URL to find more information about the news item.
      */
     public String getUrl() {
         return mUrl;

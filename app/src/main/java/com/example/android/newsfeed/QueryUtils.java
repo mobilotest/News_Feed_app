@@ -131,7 +131,7 @@ public final class QueryUtils {
 
             // Extract the JSONArray associated with the key called "features",
             // which represents a list of features (or news).
-            JSONArray newsArray = baseJsonResponse.getJSONArray("features");
+            JSONArray newsArray = baseJsonResponse.getJSONArray("results");
 
             // For each earthquake in the newsArray, create an {@link Earthquake} object
             for (int i = 0; i < newsArray.length(); i++) {
@@ -142,26 +142,32 @@ public final class QueryUtils {
                 // For a given earthquake, extract the JSONObject associated with the
                 // key called "properties", which represents a list of all properties
                 // for that earthquake.
-                JSONObject properties = currentNews.getJSONObject("properties");
+                JSONObject results = currentNews.getJSONObject("results");
 
                 // Extract the value for the key called "mag"
-                double magnitude = properties.getDouble("mag");
+                String thumbnail = results.getString("webTitle");
+
+                // Extract the value for the key called "mag"
+                String header = results.getString("webTitle");
 
                 // Extract the value for the key called "place"
-                String location = properties.getString("place");
+                String body = results.getString("webUrl");
+
+                // Extract the value for the key called "place"
+                String section = results.getString("sectionName");
 
                 // Extract the value for the key called "time"
-                long time = properties.getLong("time");
+                long time = results.getLong("webPublicationDate");
 
                 // Extract the value for the key called "url"
-                String url = properties.getString("url");
+                String url = results.getString("apiUrl");
 
                 // Create a new {@link News} object with the magnitude, location, time,
                 // and url from the JSON response.
-                News newss = new News(magnitude, location, time, url);
+                News newsProperties = new News(thumbnail, header, body, section, time, url);
 
                 // Add the new {@link News} to the list of news.
-                news.add(newss);
+                news.add(newsProperties);
             }
 
         } catch (JSONException e) {

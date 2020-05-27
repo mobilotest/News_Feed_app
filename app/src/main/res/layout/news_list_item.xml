@@ -8,18 +8,6 @@ android:layout_height="400dp"
 android:background="@color/color_primary"
 android:minHeight="@dimen/list_item_height">
 
-<TextView
-    android:id="@+id/magnitude"
-    android:layout_width="36dp"
-    android:layout_height="36dp"
-    android:layout_gravity="center_vertical"
-    android:background="@drawable/magnitude_circle"
-    android:fontFamily="sans-serif-medium"
-    android:gravity="center"
-    android:textColor="@android:color/white"
-    android:textSize="16sp"
-    tools:text="8.9" />
-
 <ImageView
     android:id="@+id/img_newspic"
     android:layout_width="390dp"
@@ -35,22 +23,9 @@ android:minHeight="@dimen/list_item_height">
     android:layout_alignParentLeft="true"
     android:scaleType="centerCrop"/>
 
-    <TextView
-        android:id="@+id/magnitude"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_gravity="center_vertical"
-        android:background="@drawable/magnitude_circle"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        tools:text="8.9"
-        tools:ignore="DuplicateIds" />
-
 <TextView
-    android:id="@+id/location_offset"
-    android:textColor="@color/textColorEarthquakeDetails"
+    android:id="@+id/tv_header"
+    android:textColor="@color/text_color"
     android:layout_width="387dp"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
@@ -61,8 +36,8 @@ android:minHeight="@dimen/list_item_height">
     android:text="Text Header" />
 
 <TextView
-    android:id="@+id/primary_location"
-    android:textColor="@color/textColorEarthquakeDetails"
+    android:id="@+id/tv_body"
+    android:textColor="@color/text_color"
     android:layout_width="390dp"
     android:layout_height="55dp"
     android:layout_alignParentBottom="true"
@@ -85,7 +60,7 @@ android:minHeight="@dimen/list_item_height">
     android:layout_marginLeft="11dp" />
 
 <TextView
-    android:id="@+id/date"
+    android:id="@+id/tv_section"
     android:layout_width="153dp"
     android:layout_height="wrap_content"
     android:layout_alignParentStart="true"
@@ -95,7 +70,7 @@ android:minHeight="@dimen/list_item_height">
     android:text="Brain Wash"
     android:textStyle="italic"
     android:layout_alignParentLeft="true"
-    android:textColor="@color/textColorEarthquakeDetails"
+    android:textColor="@color/text_color"
     android:layout_marginLeft="52dp" />
 
 <ImageView
@@ -111,8 +86,8 @@ android:minHeight="@dimen/list_item_height">
     android:layout_marginLeft="223dp" />
 
 <TextView
-    android:id="@+id/time"
-    android:textColor="@color/textColorEarthquakeDetails"
+    android:id="@+id/tv_date_time"
+    android:textColor="@color/text_color"
     android:layout_width="137dp"
     android:layout_height="wrap_content"
     android:layout_alignParentEnd="true"
