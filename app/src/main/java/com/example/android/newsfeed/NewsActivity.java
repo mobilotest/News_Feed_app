@@ -155,7 +155,7 @@ public class NewsActivity extends AppCompatActivity
         loadingIndicator.setVisibility(View.GONE);
 
         // Set empty state text to display "No news found."
-        mEmptyStateTextView.setText(R.string.no_earthquakes);
+        mEmptyStateTextView.setText(R.string.no_news);
 
         // Clear the adapter of previous earthquake data
         mAdapter.clear();
