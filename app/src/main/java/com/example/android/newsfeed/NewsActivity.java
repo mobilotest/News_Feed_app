@@ -40,11 +40,15 @@ import java.util.List;
 public class NewsActivity extends AppCompatActivity
         implements LoaderCallbacks<List<News>> {
 
-    /** URL for earthquake data from the GUARDIAN dataset */
-    private static final String GUARDIAN_REQUEST_URL = "http://content.guardianapis.com/search?q=debates&api-key=test";
-    // "https://content.guardianapis.com/search?q=debate&tag=politics/politics&from-date=2014-01-01&api-key=test";
+    /**
+     * URL for earthquake data from the GUARDIAN dataset
+     */
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?";
+            // "https://content.guardianapis.com/search?q=debate&tag=politics/politics&from-date=2014-01-01&api-key=test";
 
-    /** Adapter for the list of news */
+    /**
+     * Adapter for the list of news
+     */
     private NewsAdapter mAdapter;
 
     /**
@@ -53,7 +57,9 @@ public class NewsActivity extends AppCompatActivity
      */
     private static final int NEWS_LOADER_ID = 1;
 
-    /** TextView that is displayed when the list is empty */
+    /**
+     * TextView that is displayed when the list is empty
+     */
     private TextView mEmptyStateTextView;
 
     @Override
@@ -80,7 +86,7 @@ public class NewsActivity extends AppCompatActivity
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
-        if (networkInfo!=null && networkInfo.isConnected()){
+        if (networkInfo != null && networkInfo.isConnected()) {
             LoaderManager loaderManager = getLoaderManager();
 
             loaderManager.initLoader(NEWS_LOADER_ID, null, this);
@@ -125,7 +131,9 @@ public class NewsActivity extends AppCompatActivity
 
     @Override
     public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
+
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
         String sectionName = sharedPrefs.getString(
                 getString(R.string.settings_min_magnitude_key),
                 getString(R.string.settings_min_magnitude_default));
@@ -135,14 +143,15 @@ public class NewsActivity extends AppCompatActivity
                 getString(R.string.settings_order_by_default)
         );
 
+
         Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
+        uriBuilder.appendQueryParameter("format", "json");
         uriBuilder.appendQueryParameter("show-fields", "thumbnail");
+        uriBuilder.appendQueryParameter("show-fields", "headline");
+        uriBuilder.appendQueryParameter("show-fields", "body");
         uriBuilder.appendQueryParameter("sectionName", sectionName);
-        uriBuilder.appendQueryParameter("webPublicationDate", "time");
-        uriBuilder.appendQueryParameter("show-tags", "contributor");
-        uriBuilder.appendQueryParameter("api-key", "test");
         uriBuilder.appendQueryParameter("webPublicationDate", orderBy);
 
         return new NewsLoader(this, uriBuilder.toString());
