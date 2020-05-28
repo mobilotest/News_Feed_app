@@ -45,7 +45,7 @@ public class NewsActivity extends AppCompatActivity
     /**
      * URL for news data from the GUARDIAN dataset
      */
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?";
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?api-key=test";
             // "https://content.guardianapis.com/search?q=debate&tag=politics/politics&from-date=2014-01-01&api-key=test";
 
     /**
@@ -137,7 +137,7 @@ public class NewsActivity extends AppCompatActivity
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         // TODO: show news based on selected SETTINGS
-        String sectionName = sharedPrefs.getString(
+        String timePeriod = sharedPrefs.getString(
                 getString(R.string.settings_min_days_key),
                 getString(R.string.settings_min_days_default));
 
@@ -152,11 +152,11 @@ public class NewsActivity extends AppCompatActivity
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
         uriBuilder.scheme("https").authority("content.guardianapis.com");
-        uriBuilder.appendQueryParameter("format", "json");
+        uriBuilder.appendQueryParameter("q", "android");
         uriBuilder.appendQueryParameter("show-fields", "thumbnail");
         uriBuilder.appendQueryParameter("show-fields", "headline");
         uriBuilder.appendQueryParameter("show-tags", "contributor");
-        uriBuilder.appendQueryParameter("sectionName", sectionName);
+        uriBuilder.appendQueryParameter("sectionName", timePeriod);
         uriBuilder.appendQueryParameter("webPublicationDate", orderBy);
         uriBuilder.appendQueryParameter("api-key", "test");
         uriBuilder.build();

@@ -81,8 +81,8 @@ public class NewsAdapter extends ArrayAdapter<News> {
         sectionTextView.setText(currentNews.getSection());
         // TODO: Set the color or the section text for the news
 //        int color = ContextCompat.getColor(getContext(), mColorResourceId);
-//        getSectionName();
-
+        int color = getSectionName(sectionTextView.toString());
+        sectionTextView.setTextColor(color);
 
         // Create a new Date object from the time in milliseconds of the news
         Date dateObject = new Date(currentNews.getTimeInMilliseconds());

@@ -23,11 +23,11 @@ public class SettingsActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
 
-            Preference minMagnitude = findPreference(getString(R.string.settings_min_days_key));
-            bindPreferenceSummaryToValue(minMagnitude);
-
             Preference orderBy = findPreference(getString(R.string.settings_order_by_key));
             bindPreferenceSummaryToValue(orderBy);
+
+            Preference minMagnitude = findPreference(getString(R.string.settings_min_days_key));
+            bindPreferenceSummaryToValue(minMagnitude);
         }
 
         @Override
