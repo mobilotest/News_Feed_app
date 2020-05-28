@@ -14,13 +14,13 @@ public class News {
     private String mNewsHeader;
 
     /** Body of the news item */
-    private ArrayList<String> mAuthors;
+    private String mAuthor;
 
     /** Section of the news item */
     private String mSection;
 
     /** Time of the news item */
-    private long mTimeInMilliseconds;
+    private String mDate;
 
     /** Website URL of the news item */
     private String mUrl;
@@ -29,18 +29,18 @@ public class News {
      * Constructs a new {@link News} object.
      *  @param thumbnail is the image of the news
      * @param header is the header of the news
-     * @param authors is the author of the news
+     * @param author is the author of the news
      * @param section is the section of the news
-     * @param time is the time in milliseconds (from the Epoch) when the news published
+     * @param date is the time in milliseconds (from the Epoch) when the news published
      * @param url is the website URL to find more details about the news
      */
 
-    public News(String thumbnail, String header, ArrayList<String> authors, String section, long time, String url) {
+    public News(String thumbnail, String header, String section, String date, String url) {
         mThumbnail = thumbnail;
         mNewsHeader = header;
-        mAuthors = authors;
+//        mAuthor = author;
         mSection = section;
-        mTimeInMilliseconds = time;
+        mDate = date;
         mUrl = url;
     }
 
@@ -66,15 +66,15 @@ public class News {
     /**
      * Returns the body of the news item.
      */
-    public ArrayList<String> getAuthors() {
-        return mAuthors;
+    public String getAuthor() {
+        return mAuthor;
     }
 
     /**
      * Returns the time of the news item.
      */
-    public long getTimeInMilliseconds() {
-        return mTimeInMilliseconds;
+    public String getDate() {
+        return mDate;
     }
 
     /**

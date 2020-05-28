@@ -151,25 +151,25 @@ public final class QueryUtils {
                     // for that news.
 
                     // Extract the value for the key called "headline"
-                    String header = currentNews.getString("headline");
+                    String header = currentNews.getString("webTitle");
 
                     // Extract the value for the key called "sectionName"
                     String section = currentNews.getString("sectionName");
 
                     // Extract the value for the key called "webPublicationDate"
-                    long time = currentNews.getLong("webPublicationDate");
+                    String date = currentNews.getString("webPublicationDate");
 
                     // Extract the value for the key called "apiUrl"
-                    String url = currentNews.getString("apiUrl");
+                    String url = currentNews.getString("webUrl");
 
                     // Extract the value for the key called "author"
-                    JSONArray tag = currentNews.getJSONArray("tags");
-                    ArrayList<String> authors = new ArrayList<>();
-
-                    for (int j = 0; j < tag.length(); j++) {
-                        JSONObject author = tag.optJSONObject(j);
-                        authors.add(author.optString("webTitle"));
-                    }
+//                    JSONArray tag = currentNews.getJSONArray("tags");
+//                    ArrayList<String> authors = new ArrayList<>();
+//
+//                    for (int j = 0; j < tag.length(); j++) {
+//                        JSONObject author = tag.optJSONObject(j);
+//                        authors.add(author.optString("webTitle"));
+//                    }
 
                     // Extract the value for the key called "thumbnail"
                     String thumbnail;
@@ -181,7 +181,7 @@ public final class QueryUtils {
 
                     // Create a new {@link News} object with the thumbnail, header, author, section, time,
                     // and url from the JSON response.
-                    News newsResult = new News(thumbnail, header, authors, section, time, url);
+                    News newsResult = new News(thumbnail, header, section, date, url);
 
                     // Add the new {@link News} to the list of news.
                     news.add(newsResult);

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -72,7 +73,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
         TextView authorTextView = (TextView) listItemView.findViewById(R.id.tv_author);
         // Get the news body from the current News object and
         // set this text on the body TextView
-        authorTextView.setText((CharSequence) currentNews.getAuthors());
+        authorTextView.setText(currentNews.getAuthor());
 
         // Find the TextView in the list_item.xml layout with the ID version_number
         TextView sectionTextView = (TextView) listItemView.findViewById(R.id.tv_section);
@@ -85,14 +86,19 @@ public class NewsAdapter extends ArrayAdapter<News> {
         sectionTextView.setTextColor(color);
 
         // Create a new Date object from the time in milliseconds of the news
-        Date dateObject = new Date(currentNews.getTimeInMilliseconds());
-
         // Find the TextView with view ID date
-        TextView dateView = (TextView) listItemView.findViewById(R.id.tv_date_time);
+        TextView date = (TextView) listItemView.findViewById(R.id.tv_date_time);
         // Format the date string (i.e. "Mar 3, 1984")
-        String formattedDate = formatDate(dateObject);
+        SimpleDateFormat newDateFormat = new SimpleDateFormat("EEEE, MMM dd, yyyy");
+        SimpleDateFormat oldDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String getDate = currentNews.getDate().toString().substring(0, 10);
         // Display the date of the current news in that TextView
-        dateView.setText(formattedDate);
+        try {
+            Date newDate = oldDateFormat.parse(getDate);
+            date.setText(newDateFormat.format(newDate));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         // Return the list item view that is now showing the appropriate data
         return listItemView;
