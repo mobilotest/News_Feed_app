@@ -145,21 +145,13 @@ public final class QueryUtils {
 
                     // Get a single news at position i within the list of news
                     JSONObject currentNews = newsArray.getJSONObject(i);
-                    JSONObject field = currentNews.getJSONObject("fields");
-                    JSONArray tag = currentNews.getJSONArray("show-references");
 
                     // For a given news, extract the JSONObject associated with the
                     // key called "results", which represents a list of all results
                     // for that news.
 
-                    // Extract the value for the key called "thumbnail"
-                    String thumbnail = currentNews.getString("thumbnail");
-
                     // Extract the value for the key called "headline"
                     String header = currentNews.getString("headline");
-
-                    // Extract the value for the key called "author"
-                    String author = currentNews.getString("author");
 
                     // Extract the value for the key called "sectionName"
                     String section = currentNews.getString("sectionName");
@@ -170,9 +162,26 @@ public final class QueryUtils {
                     // Extract the value for the key called "apiUrl"
                     String url = currentNews.getString("apiUrl");
 
+                    // Extract the value for the key called "author"
+                    JSONArray tag = currentNews.getJSONArray("tags");
+                    ArrayList<String> authors = new ArrayList<>();
+
+                    for (int j = 0; j < tag.length(); j++) {
+                        JSONObject author = tag.optJSONObject(j);
+                        authors.add(author.optString("webTitle"));
+                    }
+
+                    // Extract the value for the key called "thumbnail"
+                    String thumbnail;
+                    if (currentNews.has("fields")) {
+                        JSONObject field = currentNews.getJSONObject("fields");
+                        thumbnail = field.optString("thumbnail");
+                    }
+                    else {thumbnail = "";}
+
                     // Create a new {@link News} object with the thumbnail, header, author, section, time,
                     // and url from the JSON response.
-                    News newsResult = new News(thumbnail, header, author, section, time, url);
+                    News newsResult = new News(thumbnail, header, authors, section, time, url);
 
                     // Add the new {@link News} to the list of news.
                     news.add(newsResult);

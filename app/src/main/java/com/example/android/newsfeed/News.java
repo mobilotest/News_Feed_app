@@ -1,5 +1,7 @@
 package com.example.android.newsfeed;
 
+import java.util.ArrayList;
+
 /**
  * An {@link News} object contains information related to a single news.
  */
@@ -12,7 +14,7 @@ public class News {
     private String mNewsHeader;
 
     /** Body of the news item */
-    private String mNewsBody;
+    private ArrayList<String> mAuthors;
 
     /** Section of the news item */
     private String mSection;
@@ -25,20 +27,19 @@ public class News {
 
     /**
      * Constructs a new {@link News} object.
-     *
-     * @param thumbnail is the image of the news
+     *  @param thumbnail is the image of the news
      * @param header is the header of the news
-     * @param body is the body of the news
+     * @param authors is the author of the news
      * @param section is the section of the news
      * @param time is the time in milliseconds (from the Epoch) when the news published
      * @param url is the website URL to find more details about the news
      */
 
-    public News(String thumbnail, String header, String body, String section, long time, String url) {
+    public News(String thumbnail, String header, ArrayList<String> authors, String section, long time, String url) {
         mThumbnail = thumbnail;
-        mSection = section;
         mNewsHeader = header;
-        mNewsBody = body;
+        mAuthors = authors;
+        mSection = section;
         mTimeInMilliseconds = time;
         mUrl = url;
     }
@@ -65,8 +66,8 @@ public class News {
     /**
      * Returns the body of the news item.
      */
-    public String getNewsBody() {
-        return mNewsBody;
+    public ArrayList<String> getAuthors() {
+        return mAuthors;
     }
 
     /**

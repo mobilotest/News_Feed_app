@@ -149,10 +149,11 @@ public class NewsActivity extends AppCompatActivity
         Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
+        uriBuilder.scheme("https").authority("content.guardianapis.com");
         uriBuilder.appendQueryParameter("format", "json");
         uriBuilder.appendQueryParameter("show-fields", "thumbnail");
         uriBuilder.appendQueryParameter("show-fields", "headline");
-        uriBuilder.appendQueryParameter("show-references", "author");
+        uriBuilder.appendQueryParameter("show-tags", "contributor");
         uriBuilder.appendQueryParameter("sectionName", sectionName);
         uriBuilder.appendQueryParameter("webPublicationDate", orderBy);
 

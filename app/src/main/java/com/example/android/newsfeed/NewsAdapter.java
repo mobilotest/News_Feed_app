@@ -69,10 +69,10 @@ public class NewsAdapter extends ArrayAdapter<News> {
         headerTextView.setText(currentNews.getNewsHeader());
 
         // Find the TextView in the list_item.xml layout with the ID version_number
-        TextView bodyTextView = (TextView) listItemView.findViewById(R.id.tv_body);
+        TextView authorTextView = (TextView) listItemView.findViewById(R.id.tv_author);
         // Get the news body from the current News object and
         // set this text on the body TextView
-        bodyTextView.setText(currentNews.getNewsBody());
+        authorTextView.setText((CharSequence) currentNews.getAuthors());
 
         // Find the TextView in the list_item.xml layout with the ID version_number
         TextView sectionTextView = (TextView) listItemView.findViewById(R.id.tv_section);

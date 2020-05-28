@@ -36,7 +36,7 @@ android:minHeight="@dimen/list_item_height">
     android:text="Text Header" />
 
 <TextView
-    android:id="@+id/tv_body"
+    android:id="@+id/tv_author"
     android:textColor="@color/text_color"
     android:layout_width="390dp"
     android:layout_height="55dp"
@@ -45,7 +45,7 @@ android:minHeight="@dimen/list_item_height">
     android:layout_marginLeft="12dp"
     android:layout_marginRight="12dp"
     android:layout_marginBottom="42dp"
-    android:text="Text Body" />
+    android:text="Text Author" />
 
 <ImageView
     android:id="@+id/ic_rubrica"
