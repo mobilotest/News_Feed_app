@@ -131,74 +131,75 @@ public final class QueryUtils {
             // Create a JSONObject from the JSON response string
             JSONObject baseJsonResponse = new JSONObject(newsJSON);
 
+            String response = baseJsonResponse.getString("response");
+
             // Extract the JSONObject associated with the key called "response",
             // which represents a list of Arrays (or news).
-            JSONObject response = baseJsonResponse.getJSONObject("response");
+            JSONObject object = baseJsonResponse.getJSONObject("response");
 
             // Extract the JSONArray associated with the key called "results",
             // which represents a list of results (or news).
-            JSONArray newsArray = response.getJSONArray("results");
+            JSONArray newsArray = object.getJSONArray("results");
 
-            if (newsArray.length() > 0) {
-                // For each news in the newsArray, create an {@link currentNews} object
-                for (int i = 0; i < newsArray.length(); i++) {
+//            if (newsArray.length() > 0) {
+            // For each news in the newsArray, create an {@link News} object
+            for (int i = 0; i < newsArray.length(); i++) {
 
-                    // Get a single news at position i within the list of news
-                    JSONObject currentNews = newsArray.getJSONObject(i);
+                // Get a single news at position i within the list of news
+                JSONObject currentNews = newsArray.getJSONObject(i);
 
-                    // For a given news, extract the JSONObject associated with the
-                    // key called "results", which represents a list of all results
-                    // for that news.
+                // For a given news, extract the JSONObject associated with the
+                // key called "results", which represents a list of all results
+                // for that news.
 
-                    // Extract the value for the key called "headline"
-                    String header = currentNews.getString("webTitle");
+                // Extract the value for the key called "headline"
+                String header = currentNews.getString("webTitle");
 
-                    // Extract the value for the key called "sectionName"
-                    String section = currentNews.getString("sectionName");
+                // Extract the value for the key called "sectionName"
+                String section = currentNews.getString("sectionName");
 
-                    // Extract the value for the key called "webPublicationDate"
-                    String date = currentNews.getString("webPublicationDate");
+                // Extract the value for the key called "webPublicationDate"
+                String date = currentNews.getString("webPublicationDate");
 
-                    // Extract the value for the key called "apiUrl"
-                    String url = currentNews.getString("webUrl");
+                // Extract the value for the key called "apiUrl"
+                String url = currentNews.getString("webUrl");
 
-                    // Extract the value for the key called "author"
-//                    JSONArray tag = currentNews.getJSONArray("tags");
-//                    ArrayList<String> authors = new ArrayList<>();
-//
-//                    for (int j = 0; j < tag.length(); j++) {
-//                        JSONObject author = tag.optJSONObject(j);
-//                        authors.add(author.optString("webTitle"));
-//                    }
-
-                    // Extract the value for the key called "thumbnail"
-                    String thumbnail;
-                    if (currentNews.has("fields")) {
-                        JSONObject field = currentNews.getJSONObject("fields");
-                        thumbnail = field.optString("thumbnail");
-                    }
-                    else {thumbnail = "";}
-
-                    // Create a new {@link News} object with the thumbnail, header, author, section, time,
-                    // and url from the JSON response.
-                    News newsResult = new News(thumbnail, header, section, date, url);
-
-                    // Add the new {@link News} to the list of news.
-                    news.add(newsResult);
+                //Extract the JSONArray with the key "tag"
+                String author = "";
+                JSONArray tag = currentNews.optJSONArray("tags");
+                if (tag.length() != 0) {
+                    author = tag.getJSONObject(0).getString("firstName");
                 }
 
-                // Return the list of news
-                return news;
+                JSONObject fields = currentNews.optJSONObject("fields");
+                String thumbnail = "";
+                // Extract the value for the key called "thumbnail"
+                if (fields != null) {
+                    thumbnail = fields.getString("thumbnail");
+                } else {
+                    thumbnail = "https://media.giphy.com/media/c793Kq1vwkss8/giphy.gif";
+                }
+
+                // Create a new {@link News} object with the thumbnail, header, author, section, time,
+                // and url from the JSON response.
+                News newsResult = new News(thumbnail, header, author, section, date, url);
+
+                // Add the new {@link News} to the list of news.
+                news.add(newsResult);
             }
 
-            } catch(JSONException e){
-                // If an error is thrown when executing any of the above statements in the "try" block,
-                // catch the exception here, so the app doesn't crash. Print a log message
-                // with the message from the exception.
-                Log.e("QueryUtils", "Problem parsing the news JSON results", e);
-            }
-            return null;
+            // Return the list of news
+            return news;
+//            }
+
+        } catch (JSONException e) {
+            // If an error is thrown when executing any of the above statements in the "try" block,
+            // catch the exception here, so the app doesn't crash. Print a log message
+            // with the message from the exception.
+            Log.e("QueryUtils", "Problem parsing the news JSON results", e);
         }
+        return null;
+    }
 
     /**
      * Query the USGS dataset and return a list of {@link News} objects.

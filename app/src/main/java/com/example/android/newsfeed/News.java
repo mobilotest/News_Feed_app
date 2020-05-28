@@ -35,10 +35,10 @@ public class News {
      * @param url is the website URL to find more details about the news
      */
 
-    public News(String thumbnail, String header, String section, String date, String url) {
+    public News(String thumbnail, String header, String author, String section, String date, String url) {
         mThumbnail = thumbnail;
         mNewsHeader = header;
-//        mAuthor = author;
+        mAuthor = author;
         mSection = section;
         mDate = date;
         mUrl = url;

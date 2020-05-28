@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -56,6 +58,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
             // Find the ImageView in the list_item.xml layout with the ID
             ImageView placeImage = (ImageView) listItemView.findViewById(R.id.img_newspic);
             // Get the news image from the current News and set this image on the imageView
+            Picasso.get().load(currentNews.getThumbnail()).into(placeImage);
             if (currentNews.getThumbnail() != null) {
                 placeImage.setVisibility(View.VISIBLE);
             } else {
@@ -73,15 +76,13 @@ public class NewsAdapter extends ArrayAdapter<News> {
         TextView authorTextView = (TextView) listItemView.findViewById(R.id.tv_author);
         // Get the news body from the current News object and
         // set this text on the body TextView
-        authorTextView.setText(currentNews.getAuthor());
+        authorTextView.setText("Author: " + currentNews.getAuthor());
 
         // Find the TextView in the list_item.xml layout with the ID version_number
         TextView sectionTextView = (TextView) listItemView.findViewById(R.id.tv_section);
         // Get the Section from the current News object and
         // set this text on the Section TextView
         sectionTextView.setText(currentNews.getSection());
-        // TODO: Set the color or the section text for the news
-//        int color = ContextCompat.getColor(getContext(), mColorResourceId);
         int color = getSectionName(sectionTextView.toString());
         sectionTextView.setTextColor(color);
 

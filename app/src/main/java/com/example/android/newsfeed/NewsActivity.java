@@ -35,7 +35,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +44,7 @@ public class NewsActivity extends AppCompatActivity
     /**
      * URL for news data from the GUARDIAN dataset
      */
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?api-key=test";
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?api-key=test&show-tags=contributor&show-fields=thumbnail";
 
     /**
      * Adapter for the list of news
