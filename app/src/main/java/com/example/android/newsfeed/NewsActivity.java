@@ -45,8 +45,7 @@ public class NewsActivity extends AppCompatActivity
     /**
      * URL for news data from the GUARDIAN dataset
      */
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=android&api-key=test";
-            // "https://content.guardianapis.com/search?q=debate&tag=politics/politics&from-date=2014-01-01&api-key=test";
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?api-key=test";
 
     /**
      * Adapter for the list of news

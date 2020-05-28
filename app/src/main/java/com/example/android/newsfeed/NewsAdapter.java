@@ -88,8 +88,8 @@ public class NewsAdapter extends ArrayAdapter<News> {
         // Create a new Date object from the time in milliseconds of the news
         // Find the TextView with view ID date
         TextView date = (TextView) listItemView.findViewById(R.id.tv_date_time);
-        // Format the date string (i.e. "Mar 3, 1984")
-        SimpleDateFormat newDateFormat = new SimpleDateFormat("EEEE, MMM dd, yyyy");
+        // Format the date string (i.e. "Mar 3, 1984, 4:30 PM")
+        SimpleDateFormat newDateFormat = new SimpleDateFormat("LLL dd, yyyy, h:mm a");
         SimpleDateFormat oldDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String getDate = currentNews.getDate().toString().substring(0, 10);
         // Display the date of the current news in that TextView
@@ -139,13 +139,5 @@ public class NewsAdapter extends ArrayAdapter<News> {
         }
 
         return ContextCompat.getColor(getContext(), sectionColorResourceId);
-    }
-
-    /**
-     * Return the formatted date string (i.e. "Mar 3, 1984, 4:30 PM") from a Date object.
-     */
-    private String formatDate(Date dateObject) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy, h:mm a");
-        return dateFormat.format(dateObject);
     }
 }
