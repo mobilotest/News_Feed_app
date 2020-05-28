@@ -146,6 +146,8 @@ public class NewsActivity extends AppCompatActivity
                 getString(R.string.settings_order_by_default)
         );
 
+        HttpURLConnection urlConnection = null;
+
         Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
@@ -156,6 +158,8 @@ public class NewsActivity extends AppCompatActivity
         uriBuilder.appendQueryParameter("show-tags", "contributor");
         uriBuilder.appendQueryParameter("sectionName", sectionName);
         uriBuilder.appendQueryParameter("webPublicationDate", orderBy);
+        uriBuilder.appendQueryParameter("api-key", "test");
+        uriBuilder.build();
 
         return new NewsLoader(this, baseUri.toString());
     }
