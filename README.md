@@ -18,4 +18,13 @@ Doing network operations independent of the Activity lifecycle
 Use Uri.Builder class to add query parameters to the URL
 
 ### News_Feed_app's Screenshots:
-<img src="https://github.com/mobilotest/News_Feed_app/blob/master/Images/main.png" width = 250>
+<img src="https://github.com/mobilotest/News_Feed_app/blob/master/Images/first.png" width = 250>
+<img src="https://github.com/mobilotest/News_Feed_app/blob/master/Images/second.png" width = 250>
+
+### TBD in near future:
+1. The next step will be the sorting news by category and days.
+2. Next I want to change the colors of section's text
+3. Add an Update button on the AppBar
+<img src="https://github.com/mobilotest/News_Feed_app/blob/master/Images/third.png" width = 250>
+<img src="https://github.com/mobilotest/News_Feed_app/blob/master/Images/fourth.png" width = 250>
+<img src="https://github.com/mobilotest/News_Feed_app/blob/master/Images/fifth.png" width = 250>
