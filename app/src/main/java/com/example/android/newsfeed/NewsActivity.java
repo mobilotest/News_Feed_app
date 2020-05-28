@@ -34,6 +34,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -150,11 +152,11 @@ public class NewsActivity extends AppCompatActivity
         uriBuilder.appendQueryParameter("format", "json");
         uriBuilder.appendQueryParameter("show-fields", "thumbnail");
         uriBuilder.appendQueryParameter("show-fields", "headline");
-        uriBuilder.appendQueryParameter("show-fields", "body");
+        uriBuilder.appendQueryParameter("show-references", "author");
         uriBuilder.appendQueryParameter("sectionName", sectionName);
         uriBuilder.appendQueryParameter("webPublicationDate", orderBy);
 
-        return new NewsLoader(this, uriBuilder.toString());
+        return new NewsLoader(this, baseUri.toString());
     }
 
     @Override
